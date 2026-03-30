@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Stays | Lattafa Luxury Retreat</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Merriweather:wght@300;400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="styles/components.css">
+    <style>
+        .page-header { background: var(--color-charcoal); color: var(--color-white); padding: 120px 20px 60px; text-align: center; }
+        .room-detail-section { display: flex; gap: 40px; margin-bottom: 80px; align-items: center; }
+        .room-detail-img { flex: 1; border-radius: var(--border-radius); overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.1); }
+        .room-detail-img img { width: 100%; display: block; }
+        .room-detail-content { flex: 1; }
+        .room-amenities-list { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin: 20px 0; }
+        .room-amenities-list li { display: flex; align-items: center; gap: 10px; font-size: 0.95rem; }
+        .room-amenities-list i { color: var(--color-gold); }
+        @media(max-width: 768px) { .room-detail-section { flex-direction: column; } .room-detail-section[style*="flex-direction: row-reverse"] { flex-direction: column !important; } }
+    </style>
+</head>
+<body>
+    <nav class="navbar scrolled">
+        <div class="container nav-container">
+            <a href="index.html" class="logo">LATTAFA<span>.</span></a>
+            <div class="nav-links">
+                <a href="stays.html" style="color: var(--color-gold);">Our Stays</a>
+                <a href="amenities.html">Amenities</a>
+                <a href="explore.html">Explore Kisumu</a>
+                <a href="book.html" class="btn btn-primary" style="padding: 8px 20px;">Book Now</a>
+            </div>
+        </div>
+    </nav>
+
+    <header class="page-header">
+        <div class="container">
+            <h1 style="font-size: 3rem; color: var(--color-gold);">Our Exclusive Stays</h1>
+            <p>Discover the perfect sanctuary tailored to your needs.</p>
+        </div>
+    </header>
+
+    <section class="section container">
+        <!-- 1BR -->
+        <div id="1br" class="room-detail-section">
+            <div class="room-detail-img">
+                <img src="assets/luxury_bedroom.png" alt="1 Bedroom Executive">
+            </div>
+            <div class="room-detail-content">
+                <h2 style="font-family: var(--font-heading); font-size: 2.2rem;">1 Bedroom Executive</h2>
+                <p style="color: var(--color-gold); font-size: 1.2rem; font-weight: 700; margin-bottom: 15px;">KES 3,000 / night</p>
+                <p>Perfect for solo travelers or couples. The executive 1-bedroom suite offers a spacious living area, a fully equipped modern kitchen, and an ultra-comfortable king-sized bed with premium linens.</p>
+                <ul class="room-amenities-list">
+                    <li><i class="fas fa-bed"></i> 1 King Bed</li>
+                    <li><i class="fas fa-bath"></i> 1 Ensuite Bathroom</li>
+                    <li><i class="fas fa-wifi"></i> High-Speed WiFi</li>
+                    <li><i class="fas fa-tv"></i> Smart TV</li>
+                    <li><i class="fas fa-utensils"></i> Full Kitchen</li>
+                    <li><i class="fas fa-wind"></i> Air Conditioning</li>
+                </ul>
+                <a href="book.html?room=1br" class="btn btn-primary">Reserve this 1BR</a>
+            </div>
+        </div>
+
+        <!-- 2BR -->
+        <div id="2br" class="room-detail-section" style="flex-direction: row-reverse;">
+            <div class="room-detail-img">
+                <img src="assets/luxury_bedroom.png" alt="2 Bedroom Premium">
+            </div>
+            <div class="room-detail-content">
+                <h2 style="font-family: var(--font-heading); font-size: 2.2rem;">2 Bedroom Premium</h2>
+                <p style="color: var(--color-gold); font-size: 1.2rem; font-weight: 700; margin-bottom: 15px;">KES 6,000 / night</p>
+                <p>Ideal for small families or business colleagues. Featuring two well-appointed bedrooms, an expansive lounge, and a dedicated dining space. Privacy and luxury seamlessly combined.</p>
+                <ul class="room-amenities-list">
+                    <li><i class="fas fa-bed"></i> 2 Queen Beds</li>
+                    <li><i class="fas fa-bath"></i> 2 Bathrooms</li>
+                    <li><i class="fas fa-wifi"></i> High-Speed WiFi</li>
+                    <li><i class="fas fa-tv"></i> 2 Smart TVs</li>
+                    <li><i class="fas fa-utensils"></i> Full Kitchen</li>
+                    <li><i class="fas fa-car"></i> 2 Parking Spots</li>
+                </ul>
+                <a href="book.html?room=2br" class="btn btn-primary">Reserve this 2BR</a>
+            </div>
+        </div>
+
+        <!-- 3BR -->
+        <div id="3br" class="room-detail-section">
+            <div class="room-detail-img">
+                <img src="assets/luxury_bedroom.png" alt="3 Bedroom Suite">
+            </div>
+            <div class="room-detail-content">
+                <h2 style="font-family: var(--font-heading); font-size: 2.2rem;">3 Bedroom Suite</h2>
+                <p style="color: var(--color-gold); font-size: 1.2rem; font-weight: 700; margin-bottom: 15px;">KES 9,000 / night</p>
+                <p>A sprawling suite designed for ultimate comfort. Perfect for extended family stays. Enjoy a large designer living room, multiple verandas, and a massive kitchen for family meals.</p>
+                <ul class="room-amenities-list">
+                    <li><i class="fas fa-bed"></i> 3 Beds (1 King, 2 Queen)</li>
+                    <li><i class="fas fa-bath"></i> 2.5 Bathrooms</li>
+                    <li><i class="fas fa-couch"></i> Expansive Lounge</li>
+                    <li><i class="fas fa-utensils"></i> Premium Kitchen</li>
+                    <li><i class="fas fa-wifi"></i> High-Speed WiFi</li>
+                    <li><i class="fas fa-parking"></i> Secure Parking</li>
+                </ul>
+                <a href="book.html?room=3br" class="btn btn-primary">Reserve this 3BR</a>
+            </div>
+        </div>
+    </section>
+
+    <footer style="background-color: var(--color-charcoal); color: var(--color-white); padding: 40px 0 20px; text-align: center;">
+        <p>&copy; 2026 Lattafa Luxury Retreat. All Rights Reserved.</p>
+    </footer>
+    <script src="scripts/main.js"></script>
+</body>
+</html>

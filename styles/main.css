@@ -1,0 +1,42 @@
+:root {
+  --color-charcoal: #333333;
+  --color-charcoal-light: #555555;
+  --color-gold: #D4AF37;
+  --color-gold-hover: #b8972e;
+  --color-white: #F9F9F9;
+  --color-dark-overlay: rgba(51, 51, 51, 0.7);
+  
+  --font-heading: 'Merriweather', serif;
+  --font-body: 'Inter', sans-serif;
+  
+  --transition-fast: 0.3s ease;
+  --border-radius: 8px;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: var(--font-body);
+  color: var(--color-charcoal);
+  background-color: var(--color-white);
+  line-height: 1.6;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-heading);
+  font-weight: 700;
+  margin-bottom: 1rem;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+ul {
+  list-style: none;
+}

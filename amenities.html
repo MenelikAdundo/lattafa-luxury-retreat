@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Amenities | Lattafa Luxury Retreat</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Merriweather:wght@300;400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="styles/components.css">
+    <style>
+        .page-header { background: linear-gradient(var(--color-dark-overlay), var(--color-dark-overlay)), url('assets/pool_lifestyle.png') no-repeat center center/cover; color: var(--color-white); padding: 150px 20px 80px; text-align: center; }
+        .amenity-deep-dive { display: flex; gap: 40px; margin-bottom: 60px; align-items: center; }
+        .amenity-deep-dive:nth-child(even) { flex-direction: row-reverse; }
+        .amenity-icon-large { font-size: 4rem; color: var(--color-gold); margin-bottom: 20px; }
+        @media(max-width: 768px) { .amenity-deep-dive, .amenity-deep-dive:nth-child(even) { flex-direction: column; text-align: center; } }
+    </style>
+</head>
+<body>
+    <nav class="navbar scrolled">
+        <div class="container nav-container">
+            <a href="index.html" class="logo">LATTAFA<span>.</span></a>
+            <div class="nav-links">
+                <a href="stays.html">Our Stays</a>
+                <a href="amenities.html" style="color: var(--color-gold);">Amenities</a>
+                <a href="explore.html">Explore Kisumu</a>
+                <a href="book.html" class="btn btn-primary" style="padding: 8px 20px;">Book Now</a>
+            </div>
+        </div>
+    </nav>
+
+    <header class="page-header">
+        <div class="container">
+            <h1 style="font-size: 3.5rem; color: var(--color-gold);">Uncompromised Comfort</h1>
+            <p style="font-size: 1.2rem; max-width: 600px; margin: 0 auto;">Discover the premium standards we hold across every unit at Lattafa Retreat.</p>
+        </div>
+    </header>
+
+    <section class="section container">
+        <div class="amenity-deep-dive">
+            <div style="flex: 1;"><img src="assets/luxury_bedroom.png" alt="Comfortable Beds" style="width: 100%; border-radius: var(--border-radius);"></div>
+            <div style="flex: 1;">
+                <i class="fas fa-bed amenity-icon-large"></i>
+                <h2 style="font-family: var(--font-heading); font-size: 2rem;">Premium Sleep Experience</h2>
+                <p>We believe a great stay starts with a perfect night's sleep. Each bed features a high-end orthopaedic mattress, 400-thread-count Egyptian cotton linens, and a curated selection of hypoallergenic pillows.</p>
+            </div>
+        </div>
+
+        <div class="amenity-deep-dive">
+            <div style="flex: 1;"><img src="assets/hero_kitchen.png" alt="Modern Kitchen" style="width: 100%; border-radius: var(--border-radius);"></div>
+            <div style="flex: 1;">
+                <i class="fas fa-utensils amenity-icon-large"></i>
+                <h2 style="font-family: var(--font-heading); font-size: 2rem;">Gourmet Modern Kitchens</h2>
+                <p>Whether you're heating leftovers or cooking a family feast, our kitchens are designed to inspire. Enjoy sleek charcoal cabinetry, seamless countertops, modern hobs, and a full suite of premium appliances.</p>
+            </div>
+        </div>
+
+        <div class="amenity-deep-dive">
+            <div style="flex: 1;"><div style="background: var(--color-charcoal-light); height: 300px; width: 100%; border-radius: var(--border-radius); display: flex; align-items: center; justify-content: center; color: var(--color-white);"><i class="fas fa-shield-alt" style="font-size: 5rem; color: var(--color-gold);"></i></div></div>
+            <div style="flex: 1;">
+                <i class="fas fa-shield-alt amenity-icon-large"></i>
+                <h2 style="font-family: var(--font-heading); font-size: 2rem;">24/7 Security & Parking</h2>
+                <p>Peace of mind is paramount. The Lattafa Compound is fully gated with round-the-clock security personnel, CCTV surveillance, and ample, shaded private parking right at your doorstep.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer style="background-color: var(--color-charcoal); color: var(--color-white); padding: 40px 0 20px; text-align: center;">
+        <p>&copy; 2026 Lattafa Luxury Retreat. All Rights Reserved.</p>
+    </footer>
+    <script src="scripts/main.js"></script>
+</body>
+</html>
