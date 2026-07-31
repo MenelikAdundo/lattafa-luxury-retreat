@@ -29,7 +29,8 @@ Lattafa Luxury Retreat is a responsive website designed to present a luxury acco
 
 ## 📷 Screenshots
 
-(Add screenshots here)
+<img width="890" height="949" alt="image" src="https://github.com/user-attachments/assets/71f054ba-021a-49fa-85ab-f903847e252f" />
+
 
 ## 🚀 Future Improvements
 
