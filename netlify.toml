@@ -1,0 +1,17 @@
+[build]
+  publish = "."
+
+[[redirects]]
+  from = "/"
+  to = "/home.html"
+  status = 200
+
+[[redirects]]
+  from = "/stays"
+  to = "/rooms.html"
+  status = 301
+
+[[redirects]]
+  from = "/book"
+  to = "/book-new.html"
+  status = 301

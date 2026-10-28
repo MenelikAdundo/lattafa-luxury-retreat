@@ -1,71 +1,32 @@
 document.addEventListener('DOMContentLoaded', () => {
-    // Parse URL params for pre-selected room
-    const urlParams = new URLSearchParams(window.location.search);
-    const preSelectedRoom = urlParams.get('room');
-    if (preSelectedRoom) {
-        const option = document.querySelector(`.room-option[data-val="${preSelectedRoom}"]`);
-        if (option) {
-            selectRoom(preSelectedRoom, option);
-            // Optionally auto-skip to step 2 if they came from a room link?
-            // nextStep(2); 
-        }
+  const form = document.querySelector('#booking-form');
+  if (!form) return;
+  const checkIn = form.elements.checkin;
+  const checkOut = form.elements.checkout;
+  const room = form.elements.room;
+  const total = document.querySelector('#booking-total');
+  const status = document.querySelector('#form-status');
+  const rates = { '1-bedroom-suite': 3000, '2-bedroom-suite': 4000, '3-bedroom-villa': 6000, '4-bedroom-villa': 7500, 'whole-compound': 15000 };
+  const names = { '1-bedroom-suite': '1 Bedroom Suite', '2-bedroom-suite': '2 Bedroom Suite', '3-bedroom-villa': '3 Bedroom Family Villa', '4-bedroom-villa': '4 Bedroom Family Villa', 'whole-compound': 'Whole Compound / Private Event' };
+  const today = new Date();
+  today.setHours(0, 0, 0, 0);
+  const todayString = today.toISOString().slice(0, 10);
+  checkIn.min = todayString;
+  const number = value => new Intl.NumberFormat('en-KE').format(value);
+  const calculate = () => {
+    if (!checkIn.value || !checkOut.value || !rates[room.value]) { total.innerHTML = 'Choose your dates and accommodation to see an estimated stay total.'; return; }
+    const nights = Math.round((new Date(`${checkOut.value}T00:00:00`) - new Date(`${checkIn.value}T00:00:00`)) / 86400000);
+    if (nights < 1) { total.innerHTML = 'Your check-out date needs to be after check-in.'; return; }
+    total.innerHTML = `<strong>${nights} night${nights === 1 ? '' : 's'} × KSh ${number(rates[room.value])}</strong><br>Estimated accommodation total: <strong>KSh ${number(nights * rates[room.value])}</strong> for the ${names[room.value]}. Final availability and confirmation will be shared by our team.`;
+  };
+  checkIn.addEventListener('change', () => { checkOut.min = checkIn.value || todayString; if (checkOut.value && checkOut.value <= checkIn.value) checkOut.value = ''; calculate(); });
+  [checkOut, room].forEach(element => element.addEventListener('change', calculate));
+  const chosen = new URLSearchParams(window.location.search).get('room');
+  if (chosen && rates[chosen]) { room.value = chosen; calculate(); }
+  form.addEventListener('submit', event => {
+    if (!checkIn.value || !checkOut.value || new Date(checkOut.value) <= new Date(checkIn.value)) {
+      event.preventDefault(); status.textContent = 'Please choose a check-out date after your check-in date.'; checkOut.focus(); return;
     }
-
-    const form = document.getElementById('booking-form');
-    if (form) {
-        form.addEventListener('submit', (e) => {
-            e.preventDefault();
-            // Simulate API logic and Anti-Gravity CRM integration
-            const formData = new FormData(form);
-            const bookingData = Object.fromEntries(formData.entries());
-            console.log("Anti-Gravity CRM - New Booking Lead Captured:", bookingData);
-            
-            // Show Success
-            document.querySelectorAll('.form-step').forEach(s => s.classList.remove('active'));
-            document.getElementById('step-success').classList.add('active');
-            document.querySelector('.step-indicator').style.display = 'none';
-        });
-    }
+    status.textContent = 'Sending your booking enquiry…';
+  });
 });
-
-function nextStep(step) {
-    if (step === 2) {
-        const checkin = document.querySelector('input[name="checkin"]').value;
-        const checkout = document.querySelector('input[name="checkout"]').value;
-        if (!checkin || !checkout) {
-            alert('Please select check-in and check-out dates.');
-            return;
-        }
-    }
-    if (step === 3) {
-        const room = document.getElementById('selected-room').value;
-        if (!room) {
-            alert('Please select a room type.');
-            return;
-        }
-    }
-    
-    document.querySelectorAll('.form-step').forEach(s => s.classList.remove('active'));
-    document.getElementById(`step-${step}`).classList.add('active');
-    
-    document.querySelectorAll('.step').forEach(s => s.classList.remove('active'));
-    for (let i = 1; i <= step; i++) {
-        document.getElementById(`indicator-${i}`).classList.add('active');
-    }
-}
-
-function prevStep(step) {
-    document.querySelectorAll('.form-step').forEach(s => s.classList.remove('active'));
-    document.getElementById(`step-${step}`).classList.add('active');
-    
-    document.querySelectorAll('.step').forEach(s => s.classList.remove('active'));
-    for (let i = 1; i <= step; i++) {
-        document.getElementById(`indicator-${i}`).classList.add('active');
-    }
-}
-
-function selectRoom(val, element) {
-    document.getElementById('selected-room').value = val;
-    document.querySelectorAll('.room-option').forEach(el => el.classList.remove('selected'));
-    element.classList.add('selected');
-}
