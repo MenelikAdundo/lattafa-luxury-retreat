@@ -27,6 +27,12 @@ document.addEventListener('DOMContentLoaded', () => {
   [checkOut, room, ...form.querySelectorAll('[name="payment_option"]')].forEach(element => element.addEventListener('change', calculate));
   const chosen = new URLSearchParams(window.location.search).get('room'); if (chosen && rates[chosen]) room.value = chosen;
   calculate();
+  const onlineOptions = [...form.querySelectorAll('[value="pay-now"], [value="deposit"]')];
+  fetch('/.netlify/functions/payment-status').then(response => response.json()).then(({ enabled }) => {
+    if (enabled) return;
+    onlineOptions.forEach(option => { option.disabled = true; option.closest('.payment-option').classList.add('payment-option--disabled'); });
+    status.textContent = 'Online payments are being verified. You can still send a pay-at-check-in booking request.';
+  }).catch(() => {});
   const submitLead = async () => fetch('/', { method: 'POST', headers: { 'Content-Type': 'application/x-www-form-urlencoded' }, body: new URLSearchParams(new FormData(form)).toString() });
   form.addEventListener('submit', async event => {
     event.preventDefault();
