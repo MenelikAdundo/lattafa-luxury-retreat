@@ -1,264 +1,31 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-    <meta http-equiv="refresh" content="0; url=home.html">
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lattafa Luxury Retreat & Airbnb Kisumu</title>
-    <meta name="description" content="Elegant Stays. Trusted Hosting. Experience Comfort & Luxury Redefined at Lattafa Luxury Retreat.">
-    <!-- Google Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Merriweather:wght@300;400;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <!-- Custom CSS -->
-    <link rel="stylesheet" href="styles/main.css">
-    <link rel="stylesheet" href="styles/components.css">
-    <style>
-        /* Hero specific styles */
-        .hero {
-            height: 100vh;
-            background: linear-gradient(var(--color-dark-overlay), var(--color-dark-overlay)), url('assets/hero_kitchen.png') no-repeat center center/cover;
-            background-attachment: fixed;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            color: var(--color-white);
-            padding: 0 20px;
-        }
-        .hero h1 {
-            font-size: 4rem;
-            margin-bottom: 20px;
-            animation: fadeInDown 1s ease-out;
-        }
-        .hero p {
-            font-size: 1.5rem;
-            max-width: 800px;
-            margin: 0 auto 40px;
-            font-weight: 300;
-            animation: fadeInUp 1s ease-out 0.3s forwards;
-            opacity: 0;
-        }
-        .hero .btn-primary {
-            animation: fadeInUp 1s ease-out 0.6s forwards;
-            opacity: 0;
-            font-size: 1.1rem;
-            padding: 15px 40px;
-        }
-        
-        @keyframes fadeInDown {
-            from { opacity: 0; transform: translateY(-30px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-        @keyframes fadeInUp {
-            from { opacity: 0; transform: translateY(30px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-        
-        .section {
-            padding: 80px 0;
-        }
-        .bg-light {
-            background-color: #f4f4f4;
-        }
-        
-        /* Compound Feature */
-        .compound-feature {
-            display: flex;
-            align-items: center;
-            gap: 50px;
-        }
-        .compound-img {
-            flex: 1;
-            border-radius: var(--border-radius);
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-            overflow: hidden;
-            display: block;
-            width: 100%;
-        }
-        .compound-content {
-            flex: 1;
-        }
-        @media (max-width: 768px) {
-            .compound-feature { flex-direction: column; }
-            .hero h1 { font-size: 2.5rem; }
-            .hero p { font-size: 1.2rem; }
-        }
-    </style>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Lattafa Luxury Retreat & Airbnb — elegant suites and family villas behind Kibos Rice Mills, Kisumu.">
+  <title>Lattafa Luxury Retreat & Airbnb | Kisumu</title>
+  <link rel="stylesheet" href="styles/site.css">
 </head>
 <body>
-
-    <!-- Navbar -->
-    <nav class="navbar">
-        <div class="container nav-container">
-            <a href="index.html" class="logo">LATTAFA<span>.</span></a>
-            <div class="nav-links">
-                <a href="stays.html">Our Stays</a>
-                <a href="amenities.html">Amenities</a>
-                <a href="explore.html">Explore Kisumu</a>
-                <a href="book.html" class="btn btn-primary" style="padding: 8px 20px;">Book Now</a>
-            </div>
-        </div>
-    </nav>
-
-    <!-- Hero Section -->
-    <header class="hero">
-        <div class="container">
-            <h1>Elegant Stays. Trusted Hosting.</h1>
-            <p>Luxury Retreat & AirBnb in Kisumu. Experience comfort & luxury redefined.</p>
-            <a href="book.html" class="btn btn-primary">Book Your Stay</a>
-        </div>
-    </header>
-
-    <!-- Pricing Grid (At a Glance) -->
-    <section id="stays" class="section">
-        <div class="container">
-            <h2 class="section-title">Exclusive Stays</h2>
-            <p class="section-subtitle">Find the perfect space for your retreat in Kisumu</p>
-            
-            <div class="grid-cards">
-                <!-- 1BR Card -->
-                <div class="card">
-                    <div class="card-img" style="background-image: url('assets/luxury_bedroom.png');">
-                        <div class="card-overlay">
-                            <a href="book.html?room=1br" class="btn btn-primary">Check Availability</a>
-                        </div>
-                    </div>
-                    <div class="card-content">
-                        <h3 class="card-title">1 Bedroom Executive</h3>
-                        <p class="card-price">KES 3,000 / night</p>
-                        <p class="card-amenities"><i class="fas fa-bed"></i> 1 King Bed &nbsp;|&nbsp; <i class="fas fa-bath"></i> 1 Bath</p>
-                        <a href="stays.html#1br" class="btn btn-outline" style="width: 100%; text-align: center;">View Details</a>
-                    </div>
-                </div>
-
-                <!-- 2BR Card -->
-                <div class="card">
-                    <div class="card-img" style="background-image: url('assets/luxury_bedroom.png');">
-                        <div class="card-overlay">
-                            <a href="book.html?room=2br" class="btn btn-primary">Check Availability</a>
-                        </div>
-                    </div>
-                    <div class="card-content">
-                        <h3 class="card-title">2 Bedroom Premium</h3>
-                        <p class="card-price">KES 6,000 / night</p>
-                        <p class="card-amenities"><i class="fas fa-bed"></i> 2 Queen Beds &nbsp;|&nbsp; <i class="fas fa-bath"></i> 2 Baths</p>
-                        <a href="stays.html#2br" class="btn btn-outline" style="width: 100%; text-align: center;">View Details</a>
-                    </div>
-                </div>
-
-                <!-- 3BR Card -->
-                <div class="card">
-                    <div class="card-img" style="background-image: url('assets/luxury_bedroom.png');">
-                        <div class="card-overlay">
-                            <a href="book.html?room=3br" class="btn btn-primary">Check Availability</a>
-                        </div>
-                    </div>
-                    <div class="card-content">
-                        <h3 class="card-title">3 Bedroom Suite</h3>
-                        <p class="card-price">KES 9,000 / night</p>
-                        <p class="card-amenities"><i class="fas fa-bed"></i> 3 Beds &nbsp;|&nbsp; <i class="fas fa-bath"></i> 2 Baths</p>
-                        <a href="stays.html#3br" class="btn btn-outline" style="width: 100%; text-align: center;">View Details</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Amenities Highlight -->
-    <section class="section bg-light">
-        <div class="container">
-            <h2 class="section-title">Your Lattafa Experience</h2>
-            <p class="section-subtitle">The standard of comfort across all our units</p>
-            
-            <div class="amenities-grid">
-                <div class="amenity-item">
-                    <i class="fas fa-bed"></i>
-                    <h4>Comfortable Beds</h4>
-                    <p style="font-size: 0.85rem; color: var(--color-charcoal-light);">Premium orthopaedic mattresses.</p>
-                </div>
-                <div class="amenity-item">
-                    <i class="fas fa-shower"></i>
-                    <h4>Modern Bathrooms</h4>
-                    <p style="font-size: 0.85rem; color: var(--color-charcoal-light);">Rain showers & luxury finishes.</p>
-                </div>
-                <div class="amenity-item">
-                    <i class="fas fa-utensils"></i>
-                    <h4>Modern Kitchen</h4>
-                    <p style="font-size: 0.85rem; color: var(--color-charcoal-light);">Fully equipped and elegant.</p>
-                </div>
-                <div class="amenity-item">
-                    <i class="fas fa-car"></i>
-                    <h4>Ample Parking</h4>
-                    <p style="font-size: 0.85rem; color: var(--color-charcoal-light);">Secure and private spaces.</p>
-                </div>
-                <div class="amenity-item">
-                    <i class="fas fa-wifi"></i>
-                    <h4>High-Speed WiFi</h4>
-                    <p style="font-size: 0.85rem; color: var(--color-charcoal-light);">Stay connected effortlessly.</p>
-                </div>
-                <div class="amenity-item">
-                    <i class="fas fa-shield-alt"></i>
-                    <h4>24/7 Security</h4>
-                    <p style="font-size: 0.85rem; color: var(--color-charcoal-light);">Your safety is our priority.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Whole Compound Proposition -->
-    <section class="section">
-        <div class="container compound-feature">
-            <div class="compound-content">
-                <h2 style="font-family: var(--font-heading); font-size: 2.5rem; color: var(--color-gold); margin-bottom: 20px;">The 9 Bedroom Compound</h2>
-                <p style="font-size: 1.1rem; margin-bottom: 20px;">
-                    Perfect for corporate retreats, large family gatherings, or hosting exclusive events. Rent out the entire Lattafa Retreat and enjoy total privacy, premium amenities, and dedicated service.
-                </p>
-                <div style="background: rgba(212, 175, 55, 0.1); padding: 15px; border-left: 4px solid var(--color-gold); margin-bottom: 30px;">
-                    <strong>Special Rate:</strong> KES 15,000 / night
-                </div>
-                <a href="book.html?room=whole" class="btn btn-primary">Reserve the Full Compound</a>
-            </div>
-            <img src="assets/pool_lifestyle.png" alt="Lattafa Swimming Pool" class="compound-img">
-        </div>
-    </section>
-
-    <!-- Footer -->
-    <footer>
-        <div class="container footer-container">
-            <div class="footer-col">
-                <h3>LATTAFA.</h3>
-                <p>Elegant Stays. Trusted Hosting.</p>
-                <p>Near Kibos Rice Mills, Kisumu</p>
-            </div>
-            <div class="footer-col">
-                <h3 style="color: var(--color-white); font-size: 1.1rem;">Quick Links</h3>
-                <a href="#stays">Our Stays</a>
-                <a href="amenities.html">Amenities</a>
-                <a href="explore.html">Explore Kisumu</a>
-            </div>
-            <div class="footer-col">
-                <h3 style="color: var(--color-white); font-size: 1.1rem;">Contact Us</h3>
-                <p><i class="fas fa-envelope"></i> hello@lattafa.co.ke</p>
-                <p><i class="fas fa-phone"></i> +254 700 000000</p>
-            </div>
-            <div class="footer-col" style="text-align: right;">
-                <h3 style="color: var(--color-white); font-size: 1.1rem;">Trust & Security</h3>
-                <p>Best Price Guarantee for Direct Bookings.</p>
-                <div style="margin-top: 15px; font-size: 1.5rem; color: #888; display: flex; gap: 15px; justify-content: flex-end;">
-                    <i class="fab fa-cc-visa"></i>
-                    <i class="fab fa-cc-mastercard"></i>
-                    <i class="fas fa-lock"></i>
-                </div>
-            </div>
-        </div>
-        <div class="footer-bottom">
-            &copy; 2026 Lattafa Luxury Retreat. All Rights Reserved.
-        </div>
-    </footer>
-
-    <!-- Scripts -->
-    <script src="scripts/main.js"></script>
-</body>
-</html>
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header"><nav class="nav container" aria-label="Main navigation">
+  <a class="brand" href="index.html" aria-label="Lattafa Luxury Retreat home">LATTAFA<small>LUXURY RETREAT & AIRBNB</small></a>
+  <button class="menu-toggle" type="button" aria-expanded="false" aria-label="Open menu">☰</button>
+  <div class="nav-links"><a class="active" href="index.html">Home</a><a href="rooms.html">Rooms</a><a href="gallery.html">Gallery</a><a href="amenities.html">Amenities</a><a href="location.html">Location</a><a class="button button--primary button--small" href="book.html">Book your stay</a></div>
+</nav></header>
+<main id="main">
+  <section class="hero"><img class="hero-image" src="assets/gallery/photo-16.jpg" alt="Lattafa Luxury Retreat exterior and gardens"><div class="container hero-content"><span class="pill">Kisumu, Kenya · Behind Kibos Rice Mills</span><h1 class="display">Your private pause in Kisumu.</h1><p>Thoughtfully furnished suites and family villas for unhurried stays, group gatherings, and quiet escapes.</p><div class="hero-actions"><a class="button button--primary" href="book.html">Check availability</a><a class="button button--light" href="rooms.html">Explore the rooms</a></div><div class="hero-note"><div><strong>From KSh 3,000</strong>per night</div><div><strong>Private & spacious</strong>for stays and gatherings</div></div></div><span class="hero-scroll">Scroll to discover</span></section>
+  <section class="section"><div class="container"><div class="section-heading"><span class="eyebrow">Stay your way</span><h2 class="display">Rooms made for the way you travel.</h2><p>Choose a calm one-bedroom suite, a generous family villa, or reserve the entire compound for an occasion with room to breathe.</p></div>
+  <div class="stay-grid">
+    <article class="stay-card"><img src="assets/gallery/photo-21.jpg" alt="Warm bedroom suite"><div class="stay-copy"><span class="pill">From KSh 3,000</span><h3>1 Bedroom Suite</h3><p class="stay-price">Private access · Ideal for two</p><a class="button button--light button--small" href="rooms.html#one-bedroom">View suite</a></div></article>
+    <article class="stay-card"><img src="assets/gallery/photo-04.jpg" alt="Bright lounge in a two-bedroom suite"><div class="stay-copy"><span class="pill">From KSh 4,000</span><h3>2 Bedroom Suite</h3><p class="stay-price">Comfortable for families</p><a class="button button--light button--small" href="rooms.html#two-bedroom">View suite</a></div></article>
+    <article class="stay-card"><img src="assets/gallery/photo-24.jpg" alt="Colourful family bedroom"><div class="stay-copy"><span class="pill">From KSh 6,000</span><h3>3 Bedroom Villa</h3><p class="stay-price">Room for the whole family</p><a class="button button--light button--small" href="rooms.html#three-bedroom">View villa</a></div></article>
+    <article class="stay-card"><img src="assets/gallery/photo-18.jpg" alt="Modern kitchen and dining space"><div class="stay-copy"><span class="pill">From KSh 7,500</span><h3>4 Bedroom Villa</h3><p class="stay-price">A generous group stay</p><a class="button button--light button--small" href="rooms.html#four-bedroom">View villa</a></div></article>
+    <article class="stay-card"><img src="assets/gallery/photo-13.jpg" alt="Lattafa compound exterior"><div class="stay-copy"><span class="pill">KSh 15,000</span><h3>Whole Compound</h3><p class="stay-price">Private events & extended stays</p><a class="button button--light button--small" href="rooms.html#whole-compound">View the compound</a></div></article>
+  </div></div></section>
+  <section class="section section--soft"><div class="container split"><div class="split-media"><img src="assets/gallery/photo-19.jpg" alt="Lattafa kitchen with breakfast bar"><aside class="float-card"><span class="eyebrow">Feel at home</span><strong>Space to settle in.</strong><p>Light-filled rooms, practical kitchens and easy living.</p></aside></div><div><span class="eyebrow">The Lattafa way</span><h2 class="display" style="font-size:clamp(2.3rem,5vw,4rem);margin:10px 0 18px">Quietly considered, comfortably yours.</h2><p style="color:var(--muted)">From the moment you arrive, the spaces are designed to make a stay feel simple: comfortable beds, modern bathrooms, reliable Wi-Fi, fully equipped kitchens and secure parking.</p><div class="feature-list"><div class="feature"><span class="feature-icon">⌂</span><div><h3>Private access</h3><p>Make the space your own, whether you are visiting for work, family time or a celebration.</p></div></div><div class="feature"><span class="feature-icon">⌁</span><div><h3>Connected and convenient</h3><p>Free Wi-Fi, ample parking and easy access to Kisumu's essentials.</p></div></div><div class="feature"><span class="feature-icon">♡</span><div><h3>Hosting you can trust</h3><p>Direct booking support from a local team when you need it.</p></div></div></div><a class="button button--ghost" href="amenities.html">See all amenities</a></div></div></section>
+  <section class="section"><div class="container"><div class="section-heading center"><span class="eyebrow">Plan with ease</span><h2 class="display">Everything you need, close by.</h2><p>Lattafa is behind Kibos Rice Mills, Kisumu — a convenient base for a restful stay and discovering the city.</p></div><div class="quick-links"><a class="quick-link" href="gallery.html"><b>See the spaces</b><span>Browse real photos of the rooms, interiors and grounds →</span></a><a class="quick-link" href="location.html"><b>Find us easily</b><span>Get directions and details before you travel →</span></a><a class="quick-link" href="book.html"><b>Make an enquiry</b><span>Tell us your dates and we will confirm availability →</span></a></div></div></section>
+</main>
+<footer class="site-footer"><div class="container"><div class="footer-grid"><div><a class="brand" href="index.html">LATTAFA<small>LUXURY RETREAT & AIRBNB</small></a><p class="footer-text">Elegant stays and trusted hosting in Kisumu, Kenya.</p></div><div><p class="footer-title">Explore</p><div class="footer-links"><a href="rooms.html">Rooms & rates</a><a href="gallery.html">Gallery</a><a href="amenities.html">Amenities</a><a href="location.html">Location</a></div></div><div><p class="footer-title">Book direct</p><div class="footer-links"><a class="contact-link" href="tel:+254712816019">☎ +254 712 816 019</a><a class="contact-link" href="https://wa.me/254712816019" target="_blank" rel="noopener">◉ WhatsApp Phillip</a><a class="contact-link" href="mailto:lattafabnbresort@gmail.com">✉ lattafabnbresort@gmail.com</a></div></div></div><div class="footer-bottom"><span>© 2026 Lattafa Luxury Retreat & Airbnb.</span><span>Behind Kibos Rice Mills, Kisumu, Kenya.</span></div></div></footer>
+<script src="scripts/main.js"></script>
+</body></html>

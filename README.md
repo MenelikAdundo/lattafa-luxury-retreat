@@ -1,49 +1,18 @@
-# Lattafa Luxury Retreat
+# Lattafa Luxury Retreat & Airbnb
 
-A modern luxury retreat website showcasing elegant accommodation, premium experiences, and a seamless user experience.
+The public website for Lattafa Luxury Retreat & Airbnb in Kisumu, Kenya.
 
-## 🌐 Live Demo
+## Live site
 
 https://lattafaluxuryretreat.netlify.app/
 
-## 📖 Overview
+## Included
 
-Lattafa Luxury Retreat is a responsive website designed to present a luxury accommodation experience with a clean, modern interface and intuitive navigation.
+- Responsive homepage, rooms, amenities, gallery and location pages
+- Direct phone, WhatsApp and email contact links
+- Netlify Forms booking enquiry flow with owner email notifications
+- Real accommodation photography and published room rates
 
-## ✨ Features
+## Local preview
 
-- Responsive design
-- Modern UI
-- Smooth navigation
-- Mobile-friendly
-- Elegant landing page
-- Fast deployment with Netlify
-
-## 🛠 Technologies
-
-- Lovable
-- React
-- TypeScript
-- Tailwind CSS
-- Netlify
-
-## 📷 Screenshots
-
-<img width="890" height="949" alt="image" src="https://github.com/user-attachments/assets/71f054ba-021a-49fa-85ab-f903847e252f" />
-
-
-## 🚀 Future Improvements
-
-- Online booking system
-- Payment integration
-- User authentication
-- Admin dashboard
-- Customer reviews
-
-## 👨‍💻 Author
-
-**Menelik Adundo**
-
-Applied Computer Science Student
-
-Thomas More University of Applied Sciences
+Open `index.html` in a browser, or deploy through Netlify. The site is static HTML, CSS and JavaScript; no build step is required.

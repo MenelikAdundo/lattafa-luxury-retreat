@@ -2,16 +2,36 @@
   publish = "."
 
 [[redirects]]
-  from = "/"
-  to = "/home.html"
-  status = 200
-
-[[redirects]]
   from = "/stays"
   to = "/rooms.html"
   status = 301
 
 [[redirects]]
   from = "/book"
-  to = "/book-new.html"
+  to = "/book.html"
+  status = 301
+
+[[redirects]]
+  from = "/home.html"
+  to = "/"
+  status = 301
+
+[[redirects]]
+  from = "/stays.html"
+  to = "/rooms.html"
+  status = 301
+
+[[redirects]]
+  from = "/explore.html"
+  to = "/location.html"
+  status = 301
+
+[[redirects]]
+  from = "/amenities-new.html"
+  to = "/amenities.html"
+  status = 301
+
+[[redirects]]
+  from = "/book-new.html"
+  to = "/book.html"
   status = 301
