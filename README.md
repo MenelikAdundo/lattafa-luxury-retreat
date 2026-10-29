@@ -12,7 +12,7 @@ A modern accommodation website for a family-run retreat behind Kibos Rice Mills 
 
 - **A welcoming homepage** with an introduction to the retreat and its accommodation collection.
 - **Rooms and rates** with dedicated sections for suites, family villas and private compound bookings.
-- **A categorized photo gallery** covering bedrooms, living spaces, kitchens, bathrooms and grounds, with full-image previews.
+- **An interactive photo gallery** with category filters, a thumbnail carousel, a natural-proportion photo grid and a full-size viewer with keyboard and touch navigation.
 - **Amenities and location pages** with arrival guidance and a Google Maps link to the nearby landmark.
 - **Direct contact links** for phone calls, WhatsApp and email.
 - **Responsive layouts** with mobile navigation and clearly labelled booking fields.
