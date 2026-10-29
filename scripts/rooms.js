@@ -1,5 +1,11 @@
 document.addEventListener('DOMContentLoaded', () => {
   const galleries = {
+    'compound': [
+      ['compound-front-dusk.jpg', 'The compound at dusk'],
+      ['compound-garden-dusk.jpg', 'Open garden space'],
+      ['13', 'Another view of the compound'],
+      ['14', 'Lattafa compound overview']
+    ],
     'one-bedroom': [
       ['23', 'Light-filled bedroom and seating area'],
       ['29', 'A quiet corner to relax'],
@@ -7,11 +13,11 @@ document.addEventListener('DOMContentLoaded', () => {
     ],
     'two-bedroom': [
       ['04', 'A welcoming lounge at Lattafa'],
-      ['26', 'A comfortable bedroom at the retreat'],
+      ['bedroom-blue-curtains.jpg', 'Bedroom with blue curtains and a dark headboard'],
       ['28', 'Kitchen and breakfast bar']
     ],
     'three-bedroom': [
-      ['26', 'A bedroom with an upholstered headboard'],
+      ['bedroom-blue-curtains.jpg', 'Bedroom with blue curtains and a dark headboard'],
       ['19', 'Kitchen and dining space'],
       ['17', 'Modern bathroom']
     ],
@@ -21,6 +27,7 @@ document.addEventListener('DOMContentLoaded', () => {
       ['19', 'Kitchen and breakfast bar']
     ]
   };
+  const photoSource = file => /^\d{2}$/.test(file) ? `assets/gallery/photo-${file}.jpg` : `assets/gallery/${file}`;
   const cards = [...document.querySelectorAll('[data-room-category]')];
   const filterButtons = [...document.querySelectorAll('[data-room-filter]')];
   const count = document.querySelector('.room-count');
@@ -53,7 +60,7 @@ document.addEventListener('DOMContentLoaded', () => {
       position = (position + Number(button.dataset.slide) + images.length) % images.length;
       card.dataset.photoIndex = String(position);
       const image = card.querySelector('.suite-cover');
-      image.src = `assets/gallery/photo-${images[position][0]}.jpg`;
+      image.src = photoSource(images[position][0]);
       image.alt = images[position][1];
       card.querySelector('.suite-photo-counter').textContent = `${String(position + 1).padStart(2, '0')} / 03`;
     }));
@@ -66,7 +73,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const renderDialog = () => {
     const [file, caption] = activeGallery[currentPhoto];
     const image = dialog.querySelector('.room-dialog-image');
-    image.src = `assets/gallery/photo-${file}.jpg`;
+    image.src = photoSource(file);
     image.alt = caption;
     dialog.querySelector('.room-dialog-caption').textContent = `${currentPhoto + 1} / ${activeGallery.length} — ${caption}`;
   };
@@ -78,8 +85,8 @@ document.addEventListener('DOMContentLoaded', () => {
     if (typeof dialog.showModal !== 'function') { window.location.assign('gallery.html'); return; }
     const card = button.closest('[data-room-gallery]');
     activeGallery = galleries[button.dataset.openGallery];
-    currentPhoto = Number(card.dataset.photoIndex || 0);
-    dialog.querySelector('#room-dialog-title').textContent = card.querySelector('h3').textContent;
+    currentPhoto = Number(button.dataset.galleryIndex || card?.dataset.photoIndex || 0);
+    dialog.querySelector('#room-dialog-title').textContent = button.dataset.galleryTitle || card.querySelector('h3').textContent;
     returnFocus = button;
     renderDialog();
     dialog.showModal();

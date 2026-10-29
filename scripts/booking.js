@@ -8,7 +8,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const status = document.querySelector('#form-status');
   const submitButton = form.querySelector('[type="submit"]');
   const rates = { '1-bedroom-suite': 3000, '2-bedroom-suite': 4000, '3-bedroom-villa': 6000, '4-bedroom-villa': 7500, 'whole-compound': 15000 };
-  const names = { '1-bedroom-suite': '1 Bedroom Suite', '2-bedroom-suite': '2 Bedroom Suite', '3-bedroom-villa': '3 Bedroom Family Villa', '4-bedroom-villa': '4 Bedroom Family Villa', 'whole-compound': 'Whole Compound / Private Event' };
+  const names = { '1-bedroom-suite': '1 Bedroom Suite', '2-bedroom-suite': '2 Bedroom Suite', '3-bedroom-villa': '3 Bedroom Family Villa', '4-bedroom-villa': '4 Bedroom Family Villa', 'whole-compound': '8 Bedroom Whole Compound / Private Event' };
   const format = value => new Intl.NumberFormat('en-KE').format(value);
   const today = new Date(); today.setHours(0, 0, 0, 0);
   checkIn.min = today.toISOString().slice(0, 10);

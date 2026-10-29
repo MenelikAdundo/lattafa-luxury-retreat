@@ -25,7 +25,7 @@ A modern accommodation website for a family-run retreat behind Kibos Rice Mills 
 | 2 Bedroom Suite | KSh 4,000 |
 | 3 Bedroom Family Villa | KSh 6,000 |
 | 4 Bedroom Family Villa | KSh 7,500 |
-| Whole Compound / Private Event | KSh 15,000 |
+| Whole Compound / Private Event — 8 bedrooms | KSh 15,000 |
 
 Availability and final arrangements are confirmed directly by the hosting team.
 
