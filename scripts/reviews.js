@@ -83,6 +83,9 @@ document.addEventListener('DOMContentLoaded', () => {
           update();
         }
       });
+      if (window.location.hash === '#share-your-stay') {
+        document.querySelector('#share-your-stay')?.scrollIntoView({ block: 'start', behavior: 'instant' });
+      }
     })
     .catch(() => { /* Keep the invitation and review form available if the list cannot load. */ });
 });
