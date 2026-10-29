@@ -17,6 +17,12 @@ A modern accommodation website for a family-run retreat behind Kibos Rice Mills 
 - **Direct contact links** for phone calls, WhatsApp and email.
 - **Responsive layouts** with mobile navigation and clearly labelled booking fields.
 
+## Guest reviews
+
+The homepage links to `reviews.html`, where guests can submit a rating and written feedback through the `guest-review` Netlify Form. Submitted reviews are private and pending review; they are never published automatically. The form asks for permission to publish the guest's first name, rating, month of stay and review. Email addresses remain private in Netlify Forms.
+
+To feature feedback, first confirm the stay and publication permission, then add only the approved public fields to `assets/reviews.json` and deploy. Each entry uses `name` and `text`, with optional `title`, `accommodation`, `rating` (guest-selected integer 1–5), `stayMonth` (`YYYY-MM`), `sourceLabel`, and `sourceUrl` (HTTPS). Do not add emails, phone numbers or booking details to that public file. Five owner-supplied testimonials are included without invented scores or dates. An average is shown only when guest ratings are supplied, using only those rated entries. When no entries exist, the site shows an invitation to share a stay. Existing Netlify email notifications configured for all forms also cover new review submissions; delivery depends on the site's Netlify notification settings.
+
 ## Accommodation
 
 | Stay | Advertised nightly rate |
