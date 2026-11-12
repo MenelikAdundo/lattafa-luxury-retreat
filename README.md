@@ -39,11 +39,13 @@ Availability and final arrangements are confirmed directly by the hosting team.
 
 Guests select dates, accommodation and guest details, then see an estimated stay total. Enquiries are collected through **Netlify Forms**, with owner email notifications configured in the Netlify dashboard.
 
-The booking interface includes full payment, a 30% deposit and pay-at-check-in choices. A separate [booking policy](booking-policy.html) explains payments, cancellations and date changes; whole-compound and private-event arrangements require a 50% deposit under that policy.
+The booking interface includes full payment, a deposit and pay-at-check-in choices. Standard stays use a 30% deposit; whole-compound and private-event bookings use a 50% deposit. The percentage and exact amount are calculated again on the server before checkout so visitors cannot alter the price in their browser.
 
-**Current payment status:** Flutterwave checkout and verification functions are scaffolded. The interface disables online payment choices when `FLW_SECRET_KEY` is absent. Live payment acceptance still needs merchant setup, complete booking/payment reconciliation, policy-aligned deposit handling and end-to-end testing. The current online deposit calculation is 30%; the 50% group/event rule is not yet enforced by checkout. Adding a key alone does not complete production payment readiness.
+Online payments use **Paystack hosted checkout** for M-Pesa and cards. Netlify Functions initialize the transaction, store the expected booking amount in signed Paystack metadata, verify the returned reference, currency and exact amount, and validate signed Paystack webhooks. Successful webhooks create a private `payment-confirmation` Netlify Form submission so the owner can receive the existing form notification and reconcile it with the Paystack dashboard.
 
-Bookings are confirmed by the Lattafa team. Automatic room inventory, date holds and guest confirmation emails are not implemented.
+Set `PAYSTACK_SECRET_KEY` privately in Netlify. A test key enables online payment choices only on `book.html?payment-test=1`; normal visitors continue to see pay-at-check-in while testing is underway. A live key enables online payment choices on the normal booking page. Never expose or commit the secret key.
+
+Bookings are confirmed by the Lattafa team after availability is checked. The website does not promise an automatic date hold, and online payment alone is not presented as final availability confirmation.
 
 ## Technology
 
@@ -58,7 +60,7 @@ The site uses **HTML, CSS and vanilla JavaScript**, with **Netlify** hosting, fo
 | `assets/gallery/` | Property photography |
 | `styles/site.css` | Shared styling and responsive layouts |
 | `scripts/` | Navigation, gallery and booking interactions |
-| `netlify/functions/` | Flutterwave checkout, verification and configuration-status endpoints |
+| `netlify/functions/` | Paystack checkout, strict verification, signed webhook and configuration-status endpoints |
 | `netlify.toml` | Hosting, function directory and legacy URL redirects |
 
 ## Preview and deployment
@@ -67,7 +69,9 @@ Open `index.html` in a browser to preview the pages and design. Netlify Forms an
 
 The connected Netlify project deploys from this repository's `main` branch. The publish directory is the repository root, and functions are located in `netlify/functions/`. Legacy page addresses redirect to their current equivalents.
 
-Store Flutterwave credentials privately in Netlify environment variables. **Never commit API keys, credentials or guest booking data to GitHub.**
+Store Paystack credentials privately in Netlify environment variables. **Never commit API keys, credentials or guest booking data to GitHub.**
+
+In the Paystack dashboard, set the webhook URL to `https://lattafaluxuryretreat.netlify.app/.netlify/functions/paystack-webhook`. Test transactions must be completed and verified before replacing the test secret with the live secret.
 
 ## Contact
 

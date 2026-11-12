@@ -1,16 +1,78 @@
-const RATES = { '1-bedroom-suite': 3000, '2-bedroom-suite': 4000, '3-bedroom-villa': 6000, '4-bedroom-villa': 7500, 'whole-compound': 15000 };
+const crypto = require('crypto');
+const {
+  BookingValidationError,
+  getPaystackMode,
+  json,
+  normalizeBooking
+} = require('./lib/payment-utils');
+
+const siteOrigin = event => {
+  if (process.env.URL) return process.env.URL.replace(/\/$/, '');
+  const host = String(event.headers?.host || '').replace(/[^a-z0-9.:-]/gi, '');
+  return `https://${host}`;
+};
+
 exports.handler = async event => {
-  if (event.httpMethod !== 'POST') return { statusCode: 405, body: JSON.stringify({ message: 'Method not allowed.' }) };
-  if (!process.env.FLW_SECRET_KEY) return { statusCode: 503, body: JSON.stringify({ message: 'Online payments are being verified. Please choose pay at check-in or contact us on WhatsApp.' }) };
+  if (event.httpMethod !== 'POST') return json(405, { message: 'Method not allowed.' });
+  const secretKey = process.env.PAYSTACK_SECRET_KEY;
+  const mode = getPaystackMode(secretKey);
+  if (!mode) return json(503, { message: 'Online payment setup is not available yet. Please choose pay at check-in or contact us on WhatsApp.' });
+
   try {
-    const booking = JSON.parse(event.body || '{}'); const rate = RATES[booking.room];
-    const nights = Math.round((new Date(`${booking.checkout}T00:00:00`) - new Date(`${booking.checkin}T00:00:00`)) / 86400000);
-    if (!rate || nights < 1 || !booking.name || !booking.email || !booking.phone) throw new Error('Please complete valid booking details before paying.');
-    const total = rate * nights; const amount = booking.payment_option === 'deposit' ? Math.ceil(total * 0.3) : total;
-    if (!['pay-now', 'deposit'].includes(booking.payment_option)) throw new Error('Choose an online payment option.');
-    const txRef = `lattafa-${Date.now()}-${Math.random().toString(36).slice(2, 8)}`; const origin = process.env.URL || `https://${event.headers.host}`;
-    const response = await fetch('https://api.flutterwave.com/v3/payments', { method: 'POST', headers: { Authorization: `Bearer ${process.env.FLW_SECRET_KEY}`, 'Content-Type': 'application/json' }, body: JSON.stringify({ tx_ref: txRef, amount, currency: 'KES', redirect_url: `${origin}/payment-success.html`, customer: { email: booking.email, name: booking.name, phonenumber: booking.phone }, customizations: { title: 'Lattafa Luxury Retreat', description: booking.payment_option === 'deposit' ? '30% booking deposit' : 'Accommodation payment' }, meta: [{ metaname: 'room', metavalue: booking.room }, { metaname: 'checkin', metavalue: booking.checkin }, { metaname: 'checkout', metavalue: booking.checkout }, { metaname: 'payment_option', metavalue: booking.payment_option }] }) });
-    const data = await response.json(); if (!response.ok || !data?.data?.link) throw new Error(data?.message || 'Unable to create secure checkout.');
-    return { statusCode: 200, headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ link: data.data.link, txRef }) };
-  } catch (error) { return { statusCode: 400, headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ message: error.message || 'Unable to start payment.' }) }; }
+    if (String(event.body || '').length > 20000) throw new BookingValidationError('Booking details are too large.');
+    const rawBooking = JSON.parse(event.body || '{}');
+    if (mode === 'test' && rawBooking.test_mode_acknowledged !== 'true') {
+      return json(503, { message: 'Online payments are in private test mode. Please choose pay at check-in.' });
+    }
+    const booking = normalizeBooking(rawBooking);
+    const reference = `lattafa-${Date.now()}-${crypto.randomUUID().replace(/-/g, '').slice(0, 16)}`;
+    const callbackUrl = `${siteOrigin(event)}/payment-success.html`;
+    const metadata = {
+      room: booking.room,
+      checkin: booking.checkin,
+      checkout: booking.checkout,
+      guests: booking.guests,
+      stay_type: booking.stayType,
+      payment_option: booking.paymentOption,
+      guest_name: booking.name,
+      guest_email: booking.email,
+      guest_phone: booking.phone,
+      expected_amount: booking.amountSubunit,
+      total_stay_amount: booking.total * 100,
+      deposit_percentage: Math.round(booking.depositRate * 100),
+      custom_fields: [
+        { display_name: 'Accommodation', variable_name: 'accommodation', value: booking.roomName },
+        { display_name: 'Stay dates', variable_name: 'stay_dates', value: `${booking.checkin} to ${booking.checkout}` }
+      ]
+    };
+
+    const response = await fetch('https://api.paystack.co/transaction/initialize', {
+      method: 'POST',
+      headers: { Authorization: `Bearer ${secretKey}`, 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        email: booking.email,
+        amount: booking.amountSubunit,
+        currency: 'KES',
+        reference,
+        callback_url: callbackUrl,
+        metadata
+      })
+    });
+    const result = await response.json().catch(() => ({}));
+    const link = result?.data?.authorization_url;
+    if (!response.ok || !result?.status || !link) {
+      return json(502, { message: result?.message || 'Paystack could not prepare secure checkout. Please try again.' });
+    }
+    return json(200, {
+      link,
+      reference,
+      mode,
+      amount: booking.amountDue,
+      currency: 'KES',
+      depositPercentage: booking.paymentOption === 'deposit' ? Math.round(booking.depositRate * 100) : null
+    });
+  } catch (error) {
+    const status = error instanceof BookingValidationError || error instanceof SyntaxError ? 400 : 502;
+    return json(status, { message: error.message || 'Unable to start secure payment.' });
+  }
 };
